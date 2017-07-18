@@ -1,0 +1,87 @@
+{
+    "name": "aist/mailer-component-queue",
+    "description": "Mailer Queue Component",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "mailer",
+        "queue"
+    ],
+    "authors": [
+        {
+            "name": "MaSi",
+            "email": "webdeveloper@mateuszsitek.com",
+            "homepage": "http://mateuszsitek.com",
+            "role": "Author"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "zf": {
+            "component": "Aist\\Mailer\\Component\\Queue",
+            "config-provider": "Aist\\Mailer\\Component\\Queue\\ConfigProvider"
+        }
+    },
+    "require": {
+        "php": "^7.0",
+        "container-interop/container-interop": "^1.2",
+        "slm/queue-doctrine": "^2.1@dev",
+        "zendframework/zend-expressive-template": "^1.0@dev",
+        "zendframework/zend-mail": "^2.8@dev"
+    },
+    "require-dev": {
+        "malukenho/docheader": "^0.1.5",
+        "mmoreram/php-formatter": "^1.3",
+        "mockery/mockery": "^0.9.8",
+        "php-mock/php-mock-phpunit": "^2.0 || ^1.1.2",
+        "phpunit/phpunit": "^6.0.7 || ^5.7.14",
+        "satooshi/php-coveralls": "^1.0",
+        "symfony/var-dumper": "^3.3",
+        "zendframework/zend-coding-standard": "~1.0.0"
+    },
+    "autoload": {
+      "psr-4": {
+        "Aist\\Mailer\\Component\\Queue\\": "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Test\\Aist\\Mailer\\Component\\Queue\\": "test/"
+      }
+    },
+    "scripts": {
+        "post-update-cmd": [
+        ],
+        "header-fix": [
+            "php-formatter formatter:header:fix src",
+            "php-formatter formatter:header:fix test"
+        ],
+        "header-check": [
+            "docheader check src",
+            "docheader check test"
+        ],
+        "use-sort": [
+            "php-formatter formatter:use:sort src",
+            "php-formatter formatter:use:sort test"
+        ],
+        "check": [
+            "@header-check",
+            "@cs-check"
+        ],
+        "fix": [
+            "@header-fix",
+            "@use-sort",
+            "@cs-fix"
+        ],
+        "test": "phpunit --colors=always",
+        "cs-check": "phpcs --colors",
+        "cs-fix": "phpcbf --colors",
+        "test-coverage": "phpunit --coverage-clover clover.xml",
+        "upload-coverage": "coveralls -v"
+    }
+}

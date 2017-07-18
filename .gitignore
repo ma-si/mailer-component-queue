@@ -1,0 +1,5 @@
+vendor/
+.gtm/
+/.coveralls.yml
+/coveralls-upload.json
+/clover.xml
